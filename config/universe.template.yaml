@@ -1,0 +1,26 @@
+# 規則:
+# - ratio / a_share / shortable / lot_size / listed_date 一律留空(未核實,不可猜)。
+# - adr.ticker / london.ticker 為記憶中的代碼,未核實,使用前請核對。
+# - name 只作顯示。
+version_note: "initial template"
+instruments:
+  - {code: HSI,  yf: "^HSI",    name: "Hang Seng Index", role: index, sector: index, active: true}
+  - {code: "0700", yf: "0700.HK", name: Tencent,          role: stock, sector: internet,         active: true}
+  - {code: "9988", yf: "9988.HK", name: Alibaba,          role: stock, sector: internet,         active: true, adr: {ticker: BABA}}
+  - {code: "3690", yf: "3690.HK", name: Meituan,          role: stock, sector: internet,         active: true}
+  - {code: "1810", yf: "1810.HK", name: Xiaomi,           role: stock, sector: internet,         active: true}
+  - {code: "0005", yf: "0005.HK", name: HSBC,             role: stock, sector: financial,        active: true, london: {ticker: "HSBA.L"}}
+  - {code: "1398", yf: "1398.HK", name: ICBC,             role: stock, sector: financial,        active: true}
+  - {code: "3988", yf: "3988.HK", name: "Bank of China",  role: stock, sector: financial,        active: true}
+  - {code: "2318", yf: "2318.HK", name: "Ping An",        role: stock, sector: financial,        active: true}
+  - {code: "1299", yf: "1299.HK", name: AIA,              role: stock, sector: financial,        active: true}
+  - {code: "0016", yf: "0016.HK", name: "SHK Properties", role: stock, sector: property_utility, active: true}
+  - {code: "0002", yf: "0002.HK", name: CLP,              role: stock, sector: property_utility, active: true}
+  - {code: "0001", yf: "0001.HK", name: "CK Hutchison",   role: stock, sector: property_utility, active: true}
+  - {code: "0883", yf: "0883.HK", name: CNOOC,            role: stock, sector: energy_auto,      active: true}
+  - {code: "1211", yf: "1211.HK", name: BYD,              role: stock, sector: energy_auto,      active: true}
+  - {code: "0968", yf: "0968.HK", name: "Xinyi Solar",    role: stock, sector: energy_auto,      active: true}
+  - {code: "0388", yf: "0388.HK", name: HKEX,             role: stock, sector: other,            active: true}
+  - {code: "0941", yf: "0941.HK", name: "China Mobile",   role: stock, sector: other,            active: true}
+  - {code: "0027", yf: "0027.HK", name: "Galaxy Ent.",    role: stock, sector: other,            active: true}
+  - {code: "6181", yf: "6181.HK", name: "(請核對名稱)",     role: stock, sector: other,            active: true}
