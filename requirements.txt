@@ -1,9 +1,13 @@
 # 版本下限未核實
-pydantic0
+pydantic
 pyyaml
+numpy
 pandas
 pyarrow
+requests
+httplib2
 google-api-python-client
-google-aut
+google-auth
+google-auth-httplib2
 google-auth-oauthlib
 pytest
