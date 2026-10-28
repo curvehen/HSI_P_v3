@@ -1,0 +1,9 @@
+# 版本下限未核實
+pydantic0
+pyyaml
+pandas
+pyarrow
+google-api-python-client
+google-aut
+google-auth-oauthlib
+pytest
