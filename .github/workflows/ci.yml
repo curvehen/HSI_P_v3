@@ -1,0 +1,51 @@
+name: ci
+
+# 與全局規範 A5 的差異:CI 需要在 push / pull_request 時運行。
+# 本 workflow 不使用任何 secrets,fork 的 PR 取不到 secrets,且不使用 pull_request_target。
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+          cache-dependency-path: requirements.txt
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Repo hygiene (no data, models, keys tracked)
+        run: |
+          bad=$(git ls-files | grep -E '^(data|models|logs)/|\.(parquet|duckdb|pkl|pt|pth)$|(^|/)\.env$' || true)
+          if [ -n "$bad" ]; then
+            echo "forbidden tracked files: $(echo "$bad" | wc -l)"
+            exit 1
+          fi
+
+      - name: Workflow policy (no pull_request_target)
+        run: |
+          if grep -rEl "pull_request_targe[t]" .github/workflows; then
+            echo "pull_request_target is not allowed"
+            exit 1
+          fi
+
+      - name: Unit tests (offline)
+        run: pytest
