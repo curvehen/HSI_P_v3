@@ -1,0 +1,13 @@
+data/
+models/
+logs/
+.env
+*.parquet
+*.duckdb
+*.pkl
+*.pt
+*.pth
+__pycache__/
+.pytest_cache/
+.venv/
+*.egg-info/
